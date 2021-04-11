@@ -56,17 +56,17 @@
           </div>
         {{/each}}
       {{else}}
-        {{#each this.data.usersEventsRoles as |eventRole|}}
+        {{#each this.usersRoles as |Role|}}
           <tr>
-            <td>{{eventRole.user.email}}</td>
-            <td>{{eventRole.role.titleName}}</td>
-            {{#if (and @editable  (not-eq eventRole.role.name 'owner'))}}
+            <td>{{Role.user.email}}</td>
+            <td>{{Role.role.titleName}}</td>
+            {{#if (and @editable  (not-eq Role.role.name 'owner'))}}
               <td>
                 <div class="ui horizontal compact basic buttons">
                     <UiPopup
                       @content={{t "Delete"}}
                       @class="ui icon button"
-                      @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" eventRole))}}>
+                      @click={{action (confirm (t "Are you sure you would like to delete this role?") (action "deleteUserRole" Role))}}>
                       <i class="trash icon"></i>
                     </UiPopup>
                 </div>

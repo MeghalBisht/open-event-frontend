@@ -17,6 +17,11 @@ export default class ManageRoles extends Component {
     return this.data.roleInvites.filterBy('status', this.roleType);
   }
 
+  @computed('data')
+  get usersRoles() {
+    return this.data.usersGroupsRoles ? this.data.usersGroupsRoles : this.data.usersEventsRoles;
+  }
+
   @action
   openAddUserRoleModal() {
     const currentInvite = this.data.roleInvites.createRecord({});
@@ -95,7 +100,7 @@ export default class ManageRoles extends Component {
         this.notify.success(this.l10n.t('Role deleted successfully'), {
           id: 'del_role_succ'
         });
-        this.data.usersEventsRoles.removeObject(eventRole);
+        this.usersRoles.removeObject(eventRole);
       })
       .catch(e => {
         console.error('Error while deleting role', e);

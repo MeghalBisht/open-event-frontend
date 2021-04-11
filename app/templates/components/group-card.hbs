@@ -17,6 +17,11 @@
               <i class="edit icon"></i>
           </UiPopup>
         </LinkTo>
+        <LinkTo @route="groups.team" @model={{@group.id}}>
+          <UiPopup @content={{t "Team"}} @class="ml-2 ui circular icon button compact positive" @position="top center">
+              <i class="users icon"></i>
+          </UiPopup>
+        </LinkTo>
         <button class="ml-2 ui circular icon button compact red" {{action (confirm (t "Are you sure you would like to delete this group?") (action @deleteGroup @group.id))}}><i class="trash icon"></i></button>
       </div>
       <div class="meta">
